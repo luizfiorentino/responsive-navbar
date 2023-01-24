@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Work+Sans:300,600");
 
 :root {
-  --background: rgba(0, 214, 170, 0.85);
+  --background: rgba(188, 45, 232, 0.6);
 }
 
 *,
@@ -20,7 +20,7 @@ body {
 .content {
   height: 200vh;
   background-image: url(//unsplash.it/1000/1000);
-  background-color: #333;
+  background-color: rgb(56, 182, 241);
   background-blend-mode: multiply;
   background-size: cover;
   display: grid;
@@ -36,8 +36,15 @@ header {
   z-index: 999;
   width: 100%;
 }
+
 .nav-toggle {
-  display: none;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba((lightblue, 0.75));
 }
 
 .nav-toggle-label {
@@ -45,7 +52,26 @@ header {
   top: 0;
   left: 0;
   margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
 
+.nav-toggle {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+.nav-toggle:focus ~ .nav-toggle-label {
+  outline: 3px solid rgba((lightblue, 0.75));
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
   height: 100%;
   display: flex;
   align-items: center;
@@ -121,18 +147,6 @@ nav a:hover {
   transition: opacity 250ms ease-in-out 250ms;
 }
 
-/* changed this from the tutorial video to
-   allow it to gain focus, making it tabbable */
-
-header {
-  display: grid;
-  grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
-}
-
-.logo {
-  grid-column: 2 / 3;
-}
-
 @media screen and (min-width: 800px) {
   .nav-toggle-label {
     display: none;
@@ -143,16 +157,30 @@ header {
   }
 
   .logo {
-    grid-column: 2 / span 1;
-    background-color: red;
+    grid-column: 2 / 3;
   }
 
   nav {
-    all: unset;
+    position: relative;
+    text-align: left;
+    transition: none;
+    transform: scale(1, 1);
+    background: none;
+    top: initial;
+    left: initial;
     grid-column: 3 / 4;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
   }
   nav a {
     opacity: 1;
@@ -174,13 +202,5 @@ header {
 
   nav a:hover::before {
     transform: scale(1, 1);
-  }
-
-  nav ul {
-    display: flex;
-  }
-  nav li {
-    margin-left: 3em;
-    margin-bottom: 0;
   }
 }
