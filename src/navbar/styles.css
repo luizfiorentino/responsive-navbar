@@ -83,7 +83,9 @@ nav {
   left: 0;
   background: var(--background);
   width: 100%;
-  display: none;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
 }
 
 nav ul {
@@ -109,7 +111,7 @@ nav a:hover {
 }
 
 .nav-toggle:checked ~ nav {
-  display: block;
+  transform: scale(1, 1);
 }
 
 /* changed this from the tutorial video to
